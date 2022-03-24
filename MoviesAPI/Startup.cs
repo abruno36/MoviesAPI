@@ -1,7 +1,12 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using MoviesAPI.APIBehavior;
 using MoviesAPI.Filters;
-using MoviesAPI.Services;
+using MoviesAPI.Helpers;
+using NetTopologySuite;
+using NetTopologySuite.Geometries;
 
 namespace MoviesAPI
 {
@@ -17,15 +22,15 @@ namespace MoviesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            sqlOptions => sqlOptions.UseNetTopologySuite()));
 
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(MyExceptionFilter));
-            });
-
-            services.AddResponseCaching();
-            services.AddSingleton<IRepository, InMemoryRepository>();
-            services.AddTransient<MyActionFilter>();
+                options.Filters.Add(typeof(ParseBadRequest));
+            }).ConfigureApiBehaviorOptions(BadRequestsBehavior.Parse);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 
@@ -41,66 +46,32 @@ namespace MoviesAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoviesAPI", Version = "v1" });
-                //c.EnableAnnotations();
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description = @"Enter 'Bearer' [space] and your token!",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey,
-                //    Scheme = "Bearer"
-                //});
-
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer"
-                //            },
-                //            Scheme = "oauth2",
-                //            Name = "Bearer",
-                //            In= ParameterLocation.Header
-                //        },
-                //        new List<string> ()
-                //    }
-                //});
+                
             });
+
+            services.AddCors(options =>
+            {
+                var frontendURL = Configuration.GetValue<string>("frontend_url");
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
+            services.AddSingleton(provider => new MapperConfiguration(config =>
+            {
+               var geometryFactory = provider.GetRequiredService<GeometryFactory>();
+                config.AddProfile(new AutoMapperProfiles(geometryFactory));
+            }).CreateMapper());
+
+            services.AddSingleton<GeometryFactory>(NtsGeometryServices
+                .Instance.CreateGeometryFactory(srid: 4326));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-            app.Use(async (context, next) =>
-            {
-                using (var swapStream = new MemoryStream())
-                {
-                    var originalResponseBody = context.Response.Body;
-                    context.Response.Body = swapStream;
-
-                    await next.Invoke();
-
-                    swapStream.Seek(0, SeekOrigin.Begin);
-                    string responseBody = new StreamReader(swapStream).ReadToEnd();
-                    swapStream.Seek(0, SeekOrigin.Begin);
-
-                    await swapStream.CopyToAsync(originalResponseBody);
-                    context.Response.Body = originalResponseBody;
-
-                    logger.LogInformation(responseBody);
-                }
-            });
-
-            app.Map("/map1", (app) =>
-            {
-                app.Run(async context =>
-                {
-                    await context.Response.WriteAsync("I'm short-circuiting the pipeline");
-                });
-            });
-
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -111,7 +82,9 @@ namespace MoviesAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseResponseCaching();
+
+            app.UseCors();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
