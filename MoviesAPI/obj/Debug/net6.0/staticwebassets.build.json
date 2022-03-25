@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "RGOnVuaUuhzxy+DBbGSsQRVU71P5/wPQJlSJhlhFJ8A=",
+  "Hash": "J1WMXt/oa+Mg3xPHSCg0RmkaA5VXPkJmK8cDj7BUYOU=",
   "Source": "MoviesAPI",
   "BasePath": "_content/MoviesAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "MoviesAPI\\wwwroot",
+      "Source": "MoviesAPI",
+      "ContentRoot": "C:\\Projetos\\ReactNative\\Udemy\\MoviesAPI\\MoviesAPI\\wwwroot\\",
+      "BasePath": "_content/MoviesAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

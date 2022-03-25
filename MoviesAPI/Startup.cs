@@ -26,6 +26,14 @@ namespace MoviesAPI
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
             sqlOptions => sqlOptions.UseNetTopologySuite()));
 
+            //Azure - images
+            services.AddScoped<IFileStorageService, AzureStorageService>();
+
+            //Local - images - wwwroot/actors
+            //services.AddScoped<IFileStorageService, InAppStorageService>();
+
+            services.AddHttpContextAccessor();
+
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(MyExceptionFilter));
@@ -81,6 +89,8 @@ namespace MoviesAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 

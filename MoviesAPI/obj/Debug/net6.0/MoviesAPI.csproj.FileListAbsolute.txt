@@ -68,3 +68,10 @@ C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\runtimes\win\
 C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\obj\Debug\net6.0\EFCoreSqlServerNetTopologySuite.cs
 C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\AutoMapper.dll
 C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\Azure.Core.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\Azure.Storage.Common.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\System.IO.Hashing.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Projetos\ReactNative\Udemy\MoviesAPI\MoviesAPI\bin\Debug\net6.0\MoviesAPI.staticwebassets.runtime.json
