@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "z8sjzT4OB/k1fZr7tG+g1wcvj0rLv3fXqns88sNwtpHt7ALpxQ00dxo2EorqfJVY9KBx+RNmYRPjlBuDN6NzKQ==",
+  "dgSpecHash": "Vt+KgNSPvxnsLMGTz/PCaeRMYg4T685QqgeCAYX8Sn37gQXm/HcSqgQ3H8JrT/RH7ictSnaaaVIV80VrTsv/1Q==",
   "success": true,
   "projectFilePath": "C:\\Projetos\\ReactNative\\Udemy\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,9 @@
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0-preview.6.21355.2\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0-preview.6.21355.2.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\6.0.0-preview.6.21355.2\\microsoft.aspnetcore.authentication.openidconnect.6.0.0-preview.6.21355.2.nupkg.sha512",
+    "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.0-preview.6.21355.2\\microsoft.aspnetcore.cryptography.internal.6.0.0-preview.6.21355.2.nupkg.sha512",
+    "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.0-preview.6.21355.2\\microsoft.aspnetcore.cryptography.keyderivation.6.0.0-preview.6.21355.2.nupkg.sha512",
+    "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.0-preview.6.21355.2\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.0-preview.6.21355.2.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.3\\microsoft.data.sqlclient.2.1.3.nupkg.sha512",
@@ -30,6 +33,8 @@
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0-preview.6.21352.12\\microsoft.extensions.configuration.abstractions.6.0.0-preview.6.21352.12.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0-preview.6.21352.12\\microsoft.extensions.dependencyinjection.6.0.0-preview.6.21352.12.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.0-preview.6.21355.2\\microsoft.extensions.identity.core.6.0.0-preview.6.21355.2.nupkg.sha512",
+    "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.0-preview.6.21355.2\\microsoft.extensions.identity.stores.6.0.0-preview.6.21355.2.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0-preview.6.21352.12\\microsoft.extensions.logging.6.0.0-preview.6.21352.12.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0-preview.6.21352.12\\microsoft.extensions.logging.abstractions.6.0.0-preview.6.21352.12.nupkg.sha512",
     "C:\\Users\\antonio.a.bruno\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",

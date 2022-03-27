@@ -1,12 +1,16 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MoviesAPI.APIBehavior;
 using MoviesAPI.Filters;
 using MoviesAPI.Helpers;
 using NetTopologySuite;
 using NetTopologySuite.Geometries;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace MoviesAPI
 {
@@ -14,6 +18,7 @@ namespace MoviesAPI
     {
         public Startup(IConfiguration configuration)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             Configuration = configuration;
         }
 
@@ -34,22 +39,35 @@ namespace MoviesAPI
 
             services.AddHttpContextAccessor();
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
+
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(MyExceptionFilter));
                 options.Filters.Add(typeof(ParseBadRequest));
             }).ConfigureApiBehaviorOptions(BadRequestsBehavior.Parse);
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+               .AddJwtBearer(options =>
+               {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       ValidateIssuer = false,
+                       ValidateAudience = false,
+                       ValidateLifetime = true,
+                       ValidateIssuerSigningKey = true,
+                       IssuerSigningKey = new SymmetricSecurityKey(
+                           Encoding.UTF8.GetBytes(Configuration["keyjwt"])),
+                       ClockSkew = TimeSpan.Zero
+                   };
+               });
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("ApiScope", policy =>
-            //    {
-            //        policy.RequireAuthenticatedUser();
-            //        policy.RequireClaim("scope", "geek_shopping");
-            //    });
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("IsAdmin", policy => policy.RequireClaim("role", "admin"));
+            });
 
             services.AddSwaggerGen(c =>
             {
