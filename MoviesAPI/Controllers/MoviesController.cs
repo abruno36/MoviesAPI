@@ -34,7 +34,7 @@ namespace MoviesAPI.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<LandingPageDTO>> Get()
         {
-            var top = 6;
+            var top = 12;
             var today = DateTime.Today;
 
             var upcomingReleases = await _context.Movies

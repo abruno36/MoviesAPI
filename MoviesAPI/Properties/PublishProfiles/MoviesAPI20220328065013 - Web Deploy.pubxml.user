@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4ZTRbzxfgkGRU52ZwVkOJgAAAAACAAAAAAADZgAAwAAAABAAAABttp2SQpJ/1D0wv+zvEMWoAAAAAASAAACgAAAAEAAAAK3BcyIsvsQ6MHRfeQTZRB2AAAAAJxOks4/cUnoINNVXWVZDRROWy9Zk9Zri2kEk7+K8zkkdXRCcwEuTPbrW+vTw0TaEKgvin0zceA3FY8JWmO6RQOPZz/3p+YxGsahK+m9uJhMFLjOnb/38kdi4/fwDnCCveLxBIRPDuiIhcq9rtRnTYq9dWPye7MyoMWD9x//RadMUAAAACJw4AeXKPf2ZhNX8B6RUwnjKkus=</EncryptedPassword>
+    <History>True|2022-03-28T12:32:55.3531451Z;True|2022-03-28T07:53:14.0593690-03:00;True|2022-03-28T07:35:25.2299495-03:00;False|2022-03-28T07:30:08.5617981-03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="MoviesAPI.ApplicationDbContext">
+      <Value>Data Source=tcp:moviesapidbbr2.database.windows.net,1433%3bInitial Catalog=MoviesAPI_db%3bUser Id=abruno%40moviesapidbbr2%3bPassword=Abt051222%40%40</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
